@@ -17,7 +17,7 @@ void init()
 {
     for(int i=0; i<L; i++)
     {
-        for(int j=0; j<L; j++)
+        for(int j=0; j<L/2; j++)
         {
             U[0][i][j] = V[0][i][j] = 0;
             U[1][i][j] = V[1][i][j] = 0;
@@ -26,7 +26,7 @@ void init()
 
             if(j==0 or i==0 or i==L-1)
                 F[i][j] = 1;
-            if(j==L-1)
+            if(j==L/2-1)
                U[0][i][j] = U[1][i][j] = U0;
         }
     }
@@ -41,7 +41,7 @@ void LBMTau1 (int c)
 
         for(int i=0; i<L; i++)
         {
-            for(int j=0; j<L-1; j++)
+            for(int j=0; j<L/2-1; j++)
             {
                 if(F[i][j]==0)
                 {
@@ -98,14 +98,14 @@ int main()
 plik << "KG NN0" <<endl;
 plik << "ASCII"<< endl;
 plik << "DATASET STRUCTURED_POINTS" << endl;
-plik << "DIMENSIONS 100 100 1" << endl;
+plik << "DIMENSIONS 100 50 1" << endl;
 plik << "ORIGIN 0 0 0" << endl;
 plik << "SPACING 1 1 1" << endl;
-plik << "POINT_DATA 10000" << endl;
+plik << "POINT_DATA 5000" << endl;
 plik << "VECTORS Vectors0 float" << endl;
 
 
-        for(int j=0; j<L; j++)
+        for(int j=0; j<L/2; j++)
             {
             for(int i=0; i<L; i++)
             {
