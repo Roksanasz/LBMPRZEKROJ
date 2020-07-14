@@ -15,18 +15,21 @@ float U0 = 0.6;
 
 void init()
 {
+
     for(int i=0; i<L; i++)
-    {
-        for(int j=0; j<L/2; j++)
         {
+        for(int j=0; j<L/2; j++)
+                    {
+
+
             U[0][i][j] = V[0][i][j] = 0;
             U[1][i][j] = V[1][i][j] = 0;
             R[0][i][j] = R[1][i][j] = 1;
             F[i][j] = 0;
 
-            if(j==0 or i==0 or i==L-1)
+            if(j>=0 or j<=L/2-1 )
                 F[i][j] = 1;
-            if(j==L/2-1)
+            if(i==0)
                U[0][i][j] = U[1][i][j] = U0;
         }
     }
@@ -39,10 +42,12 @@ void LBMTau1 (int c)
 
 
 
-        for(int i=0; i<L; i++)
-        {
-            for(int j=0; j<L/2-1; j++)
+
+            for(int i=0; i<L; i++)
             {
+                for(int j=0; j<L/2; j++)
+                {
+
                 if(F[i][j]==0)
                 {
                     U[c][i][j] = V[c][i][j] = R[c][i][j] = 0;
@@ -93,7 +98,7 @@ int main()
 
 
      std::ofstream plik;
-     plik.open ("dane01.vtk", std::fstream::app);
+     plik.open ("dane04.vtk", std::fstream::app);
  plik<<  "# vtk DataFile Version 2.0" <<endl;
 plik << "KG NN0" <<endl;
 plik << "ASCII"<< endl;
